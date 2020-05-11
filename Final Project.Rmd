@@ -1,0 +1,84 @@
+---
+title: "Final Project"
+output:
+  pdf_document: default
+  html_document: default
+---
+**Final paper: The Effect of Forest Area on Global Atmospheric Carbon Dioxide**
+By Juhyun Hahm, Juyoung Hahm, and Monica Roberts
+
+#Abstract
+  Due to human's unforgiving actions, global warming is a critical problem that everyone should be aware of and the most important factor of global warming is caused by carbon dioxide and other air pollutants. Analyzing the effect of having adequate total state forest area on carbon dioxide may help to prevent the accelerating rate of global warming. Utilizing 2002 publicly available state level data on global atmospheric carbon dioxide rates, forest area rates, and multiple other control variables will allow us to run a linear regression focusing on how forest area affects global atmospheric carbon dioxide rates. While further linear regression showed some error within the residuals, this study would lead us to conclude that increasing the percentage of forest state area does affect the carbon dioxide rates and awareness related to increasing forest land should be spread as a result.  
+
+##Introduction
+  In today's world, there is a lot of technology that we did not have in the past. After the Industrial Revolution, there are more varieties of transportations such as cars, faster trains, airplanes, buses, and taxis, there is electricity to lighten up buildings, and there are emails, text messages, social networking services such as Facebook to interact with other people. These kinds of technology enable us to increase our work productivity and decrease wasting time. They make our lives much easier and faster. However, due to the increasing number of population, humans cut down trees and destroy the habitat of other organisms to make spaces for humans. The excessive use of technology and selfishness cause global warming. Global warming is the rise in global temperature which is caused by carbon dioxide and other air pollutants. Carbon dioxide and other air pollutants trap sunlight into the Earth causing it to heat up. The rise in temperature is very dangerous because it can cause rise in ocean level, ice melt, uncommon weather changes, and affect animals and plants which lives in certain temperature.\
+  One of the most important factor of global atmospheric carbon dioxide is forest area because plants play a critical role in controlling the rate of carbon dioxide. Plants absorb carbon dioxide in the air and release oxygen back into the air. "Forests and bushland act as carbon sinks and are a valuable means" of keeping our planet clean (WWF, 2017). According to NASA, National Aeronautics and Space Administration, forest in the world remove about "30 percent of human made carbon dioxide emission from the atmosphere during photosynthesis" and tropical forests alone remove "1.4 billion metric tons" of carbon dioxide (Espinoza, 2015). \    Therefore, government intervention of increasing forest area to increase the absorption of CO2 is important because the Earth needs plants and other vegetation for humans and other organisms to live. Expanding forest areas is one of the solution to excessive wave of carbon dioxide that humans do not practice. Earth is the planet we live and as of today there is no certain replaceable planet that is found. It is our home and it is our duty to protect the Earth and live in balance with the environment and other organisms.   
+
+###Method
+  Linear regression is used to estimate the relationship between percentage of the total state wide forest areas and global atmospheric carbon dioxide rates. After trying various model, in this paper the following regression mode is the best model:\
+              
+              Atmospheric CO2 = a + $b_1$Forest +u\
+  This study estimates the effect of percentage of the total state wide forest areas on global warming- global atmospheric carbon dioxide. We use global atmospheric carbon dioxide to represent global warming because CO2 is the main cause of global warming. In the model above, Atmospheric CO2 variable measures CO2 ppm (parts per million) per year. Our independent variable of interest is Forest Area which measures percentage of the total state wide land area. \
+  Once a regression is run utilizing these variables, the coefficients for each can be found and the subsequent estimation of their effects on the level of carbon dioxide can be analyzed. This analysis will focus on concluding which variable has the greatest impact on increasing carbon dioxide rates. This test is very critical as it will seek to substantiate the claim that increasing total state forest area is a high contributor to increased carbon dioxide rates.
+
+####Data
+  Our dependent variable measures CO2 ppm (parts per million) per year. This data was given by U.S. Energy Information Administration. \ 
+  Our independent variable measures forest area in state which is measured in percent of the total land area. In this paper, forest area includes all public and private forest land area. This study uses 2002 data based on forest land area data collected by the Forest Inventory and Analysis (FIA) Program of the U.S. Forest Service.\
+	State characteristics include forest area (percent of the total state area) and forest area was obtained for 2002 from the Forest Inventory and Analysis (FIA) Program of the U.S. Forest Service. Table 1 below presents descriptive statistics.
+	
+```{r}
+CO2_table <- matrix(c(20.55,4,103.7,42.92,1.72,89.46),ncol=3,byrow=TRUE)
+colnames(CO2_table) <- c("Mean", "Minimum Value", "Maximum Value")
+rownames(CO2_table) <- c("CO2","Forest")
+CO2_table <- as.table(CO2_table)
+CO2_table
+```
+Table 1 above shows a large variance in CO2 across states from 4 ppm per year in District of Columbia to 103.7 ppm per year in Wyoming with an average of 20.55 ppm per year. Percent of total forest area varied from 1.72 percent of total forest area in North Dakota to 89.46 percent of total forest area in Maine with an average of 42.92 percent of total forest area.
+
+#####Results
+Regression results in Table 2 below shows that forest area is an important factor of state atmospheric CO2 (p value<0.05). There is a negative relationship between forest area and CO2 level. When forest area increases by 1 percent of total land area, the level of CO2 decreases by 0.2234 ppm per year. 
+```{r}
+CO2 = read.csv("Final Project.csv", header = T)
+lm2 = lm(carbon_dioxide ~ percent_forest, data = CO2)
+summary(lm2)
+```
+
+######Conclusion and Policy Implications
+  Results show that percent of the total state forest area is an important factor of the level of carbon dioxide. Therefore, increasing forest area should be considered a crucial target for environmental groups and policy makers as a potential means of decreasing the level of CO2. One of the policies is imposing more restrictive laws to reduce the level of sulfur and carbon dioxide from coal power plants. Now, nearly 50 years after the 1970 Clean Air Act, ???shuttering of old power plants has finally begun.??? (Kolstad, 2017). Another policy is increasing the use of natural gas and renewable sources. According to the U.S Energy Information Administration, in states like Georgia and Alabama, coal consumption reduced from ???110 million short tons to 56 million short tons???, whereas natural gas consumption increased from ???338 billion cubic feet to 1,021 billion cubic feet??? (Berry, 2016). The increase in supply of natural gas and a decrease in the price of natural gas stunted the use of coal. \
+  Results of this study are not without limitations. To begin with, there may be forest area that may have not been reported into the data. Second, our statistics were obtained from various time period and from different other reports produced by different departments. Forest data was obtained from 2002, coal from 2017, transportation from 2014, farming from 2002 and carbon dioxide from 2016. If the time period was same, then the results could alter. Since population may be correlated, we can be over-estimating effect of forest area on the level of carbon dioxide.
+
+######References
+Data (for the future):
+Bureau of transportation statistics. (2014). Commuting to Work. Retrieve from
+https://www.bts.gov/content/commuting-work
+-   	Transportation (% use car, truck, or van drove only)
+ 
+Wikipedia. (2019, January 12). Forest cover by state and territory in the United States. Retrieved from https://en.wikipedia.org/wiki/Forest_cover_by_state_and_territory_in_the_United_States
+-   	Forest area (% total state area)
+ 
+Berry, R. (2018, November). U.S. Coal Consumption[Pdf]. Washington: U.S. Energy
+Information Administration.
+	     https://www.eia.gov/coal/annual/pdf/table26.pdf
+-   	Coal consumption 2017 (thousand short tons)
+ 
+U.S. Energy Information Administration. (2019). Per capita energy-related carbon dioxide
+emissions by state (2005???2016). Retrieve from https://www.eia.gov/environment/emissions/state/analysis/pdf/table6.pdf
+      -	CO2 (ppm per year)
+ 
+Statista. (2018, August). U.S.: GDP per capita by state in 2017. Retrieved from
+https://www.statista.com/statistics/248063/per-capita-us-real-gross-domestic-product-gdp-by-state/
+-regions
+ 
+WWF. (n.d.). WWF - Causes of global warming. Retrieved 2017, from
+https://www.wwf.org.au/what-we-do/climate/causes-of-global-warming#gs.9neYMjk0
+ 
+Espinoza, L. (2015, April 17). NASA Finds Good News on Forests and Carbon Dioxide.
+Retrieved from https://www.nasa.gov/jpl/nasa-finds-good-news-on-forests-and-carbon-dioxide
+ 
+Kolstad, C. (2017, March 01). What Is Killing the US Coal Industry? Retrieved from
+https://siepr.stanford.edu/research/publications/what-killing-us-coal-industry
+ 
+Berry, E. (2016, n.d.). The Gradual Decline of Coal Consumption in the United States. Retrieved
+from https://www.electricchoice.com/blog/the-gradual-decline-of-coal-consumption-in-the-united-states/
+ 
+
